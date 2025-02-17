@@ -6,7 +6,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.3.1'
+        classpath 'com.android.tools.build:gradle:8.6.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
@@ -19,6 +19,10 @@ allprojects {
 }
 
 rootProject.buildDir = '../build'
+
+android {
+    namespace 'com.eeoom.advanced_in_app_review'
+}
 subprojects {
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
@@ -26,6 +30,6 @@ subprojects {
     project.evaluationDependsOn(':app')
 }
 
-task clean(type: Delete) {
+tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
